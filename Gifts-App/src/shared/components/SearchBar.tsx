@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Props {
   placeholder: string;
@@ -11,6 +11,17 @@ export const SearchBar = ({ placeholder = "Buscar", OnQuery }: Props) => {
   
   const [query, setQuery] = useState('')
   
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      OnQuery(query)
+    },700)
+    //OnQuery(query);
+      
+    return () => {
+      clearTimeout(timeoutId)
+    }
+  },[query, OnQuery])
+
   const HandleSearch = () => {
     OnQuery(query)
     setQuery('')
