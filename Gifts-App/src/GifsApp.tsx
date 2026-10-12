@@ -3,8 +3,15 @@ import { CustomnHeader } from "./shared/components/CustomHeader"
 import { SearchBar } from "./shared/components/SearchBar"
 import { PreviousSearches } from "./gifs/components/PreviousSearches"
 import { GifList } from "./gifs/components/GifList"
+import { useState } from "react"
 
-export const GifsApp  = () => {
+export const GifsApp = () => {
+  const [previousTerm, setPreviousTerm] = useState(['dragon ball z'])
+
+  const HandleTermClicked = (term : string) => {
+    console.log({term})
+  }
+
   return (
     <>
         <CustomnHeader title = "Buscador de Gifs" 
@@ -12,7 +19,8 @@ export const GifsApp  = () => {
 
         <SearchBar placeholder="Busca lo que desees" />
 
-        <PreviousSearches searches={['Goku', 'My Melody', 'Dragon Ball Z']}  />
+      <PreviousSearches searches={previousTerm}
+        onLabelClicked={(term: string) => HandleTermClicked(term)} />
 
         <GifList gifs={mockGifs}/>
     </>

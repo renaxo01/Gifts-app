@@ -4,7 +4,8 @@ interface Props {
     gifs : Gif [];
 }
 
-export const GifList = ({gifs}: Props) => {
+export const GifList = ({ gifs }: Props) => {
+    
   return (
     <div className="gifs-container">
             {
