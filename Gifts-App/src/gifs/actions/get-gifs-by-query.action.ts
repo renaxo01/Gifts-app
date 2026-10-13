@@ -20,7 +20,7 @@ export const getGifsByQuery = async (query: string):Promise<Gif[]> => {
         id: gif.id,
         title: gif.title,
         url: gif.images.original.url,
-        width: Number(gif.original.width),
-        height: Number(gif.original.height),
+        width: Number(gif.images.original.width),
+        height: Number(gif.images.original.height),
     }));
 }

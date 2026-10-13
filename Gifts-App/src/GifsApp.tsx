@@ -7,7 +7,7 @@ import { useState } from "react"
 import { getGifsByQuery } from "./gifs/actions/get-gifs-by-query.action"
 
 export const GifsApp = () => {
-  const [previousTerm, setPreviousTerm] = useState([''])
+  const [previousTerm, setPreviousTerm] = useState(['dragon ball z'])
 
   const HandleTermClicked = (term : string) => {
     console.log({term})
