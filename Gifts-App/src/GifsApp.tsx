@@ -4,20 +4,25 @@ import { SearchBar } from "./shared/components/SearchBar"
 import { PreviousSearches } from "./gifs/components/PreviousSearches"
 import { GifList } from "./gifs/components/GifList"
 import { useState } from "react"
+import { getGifsByQuery } from "./gifs/actions/get-gifs-by-query.action"
 
 export const GifsApp = () => {
-  const [previousTerm, setPreviousTerm] = useState(['dragon ball z'])
+  const [previousTerm, setPreviousTerm] = useState([''])
 
   const HandleTermClicked = (term : string) => {
     console.log({term})
   }
 
-  const HandleSearch = (query: string = '') => {
+  const HandleSearch = async(query: string = '') => {
     query = query.trim().toLocaleLowerCase()
     if (query.length === 0) return
     if (previousTerm.includes(query)) return
     
-    setPreviousTerm([query, ...previousTerm].splice(0,7))
+    setPreviousTerm([query, ...previousTerm].splice(0, 7))
+    
+    const gifs = await getGifsByQuery(query)
+
+    console.log({gifs})
   }
 
   return (
