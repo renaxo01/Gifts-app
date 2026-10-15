@@ -6,8 +6,10 @@ export const useGifs = () => {
     const [gifs, setGifs] = useState<Gif[]>([]);
   const [previousTerm, setPreviousTerm] = useState<string[]>([]);
 
-  const HandleTermClicked = (term : string) => {
-    console.log({term})
+  const HandleTermClicked = async(term : string) => {
+    const gifs = await getGifsByQuery(term);
+
+    setGifs(gifs)
   } 
 
   const HandleSearch = async (query: string = '') => {
